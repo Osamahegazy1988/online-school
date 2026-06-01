@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منصتي التعليمية</title>
     <style>
-        /* إعدادات الخطوط والألوان العامة */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -14,7 +13,6 @@
             color: #333;
         }
 
-        /* شريط التنقل */
         header {
             background-color: #2c3e50;
             color: white;
@@ -30,31 +28,18 @@
             font-weight: bold;
         }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-right: 15px;
-            font-size: 16px;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        /* القسم الترحيبي */
         .hero {
             background: linear-gradient(135deg, #3498db, #2c3e50);
             color: white;
             text-align: center;
-            padding: 60px 20px;
+            padding: 40px 20px;
         }
 
         .hero h1 {
             margin: 0 0 10px 0;
-            font-size: 36px;
+            font-size: 32px;
         }
 
-        /* الحاوية الرئيسية للمواد */
         .container {
             max-width: 1200px;
             margin: 30px auto;
@@ -65,67 +50,53 @@
             text-align: center;
             margin-bottom: 30px;
             color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
         }
 
-        .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+        /* حاوية الدروس المعروضة دائماً */
+        .lessons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 20px;
         }
 
-        /* بطاقة المادة */
-        .course-card {
+        /* صندوق الدرس الشامل */
+        .lesson-box {
             background: white;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            padding: 20px;
-            text-align: center;
-            transition: transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            padding: 25px;
+            border-right: 6px solid #3498db;
         }
 
-        .course-card:hover {
-            transform: translateY(-5px);
-        }
+        /* ألوان مخصصة لكل مادة للتمييز */
+        .math-box { border-right-color: #e67e22; }
+        .science-box { border-right-color: #2ecc71; }
+        .env-box { border-right-color: #9b59b6; }
 
-        .course-card h3 {
-            color: #2980b9;
+        .lesson-box h3 {
             margin-top: 0;
+            color: #2c3e50;
+            font-size: 22px;
         }
 
-        .course-card p {
-            color: #666;
-            font-size: 14px;
-            line-height: 1.6;
+        .lesson-box h4 {
+            color: #7f8c8d;
+            margin: 5px 0 15px 0;
+            font-size: 16px;
         }
 
-        .btn {
-            display: inline-block;
-            background-color: #27ae60;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 15px;
-            cursor: pointer;
-            border: none;
-            font-size: 15px;
+        .lesson-content {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #444;
+            background-color: #fafafa;
+            padding: 15px;
+            border-radius: 4px;
         }
 
-        .btn:hover {
-            background-color: #219653;
-        }
-
-        /* نافذة عرض الشرح التفاعلية */
-        .lesson-viewer {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            margin-top: 40px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            display: none; /* مخفي افتراضياً ويظهر عند الضغط على مادة */
-        }
-
-        /* تذييل الصفحة */
         footer {
             text-align: center;
             padding: 20px;
@@ -137,80 +108,56 @@
 </head>
 <body>
 
-    <!-- شريط التنقل -->
     <header>
         <div class="logo">🎯 منصتي التعليمية</div>
-        <nav>
-            <a href="#">الرئيسية</a>
-            <a href="#">المواد</a>
-            <a href="#">عن المنصة</a>
-        </nav>
     </header>
 
-    <!-- القسم الترحيبي -->
     <div class="hero">
         <h1>مرحباً بك في عالم المعرفة الرقمي</h1>
-        <p>اختر مادتك وابدأ رحلة التعلم الممتعة والذكية اليوم!</p>
+        <p>تصفح الدروس والمواد الدراسية المشروحة بالأسفل مباشرة!</p>
     </div>
 
-    <!-- المحتوى الرئيسي -->
     <div class="container">
-        <h2 class="section-title">المواد الدراسية المتاحة</h2>
+        <h2 class="section-title">الشروحات والدروس المتاحة للطلاب</h2>
         
-        <div class="courses-grid">
+        <div class="lessons-container">
+            
             <!-- مادة الرياضيات -->
-            <div class="course-card">
-                <h3>🧮 الرياضيات</h3>
-                <p>تعلم الجبر، الهندسة، وحساب المثلثات بطرق مبسطة وتفاعلية تناسب جميع المستويات.</p>
-                <button class="btn" onclick="showLesson(الرياضيات', 'درس اليوم:    X في المعادلات البسيطة.')">ابدأ التعلم</button>
+            <div class="lesson-box math-box">
+                <h3>🧮 مادة: الرياضيات</h3>
+                <h4>عنوان الدرس: مقدمة في المعادلات الجبرية</h4>
+                <div class="lesson-content">
+                    تعلم الجبر وحساب المثلثات بطرق مبسطة. <br>
+                    <strong>الشرح المعتمد:</strong> سنقوم اليوم بفهم كيف نجد قيمة المتغير X في المعادلات البسيطة. على سبيل المثال، إذا كانت المعادلة $X + 5 = 10$، نقوم بنقل الرقم 5 للطرف الآخر بإشارة مخالفة لتصبح $X = 10 - 5$، وبالتالي فإن قيمة $X = 5$.
+                </div>
             </div>
 
             <!-- مادة العلوم -->
-            <div class="course-card">
-                <h3>🧪 العلوم  </h3>
-                <p>اكتشف أسرار الكون، وقوانين الحركة، والتفاعلات الكيميائية الممتعة من حولنا.</p>
-                <button class="btn" onclick="showLesson('العلوم والفيزياء', 'درس اليوم: قوانين نيوتن للحركة. سنتعرف على القانون الأول (القصور الذاتي) وتطبيقاته في حياتنا اليومية.')">ابدأ التعلم</button>
+            <div class="lesson-box science-box">
+                <h3>🧪 مادة: العلوم</h3>
+                <h4>عنوان الدرس: قوانين نيوتن للحركة</h4>
+                <div class="lesson-content">
+                    اكتشف أسرار الكون، وقوانين الحركة، والتفاعلات الكيميائية الممتعة. <br>
+                    <strong>الشرح المعتمد:</strong> سنتعرف اليوم على قانون نيوتن الأول (القصور الذاتي)، والذي ينص على أن الجسم الساكن يبقى ساكناً، والجسم المتحرك يبقى متحركاً بسرعة ثابتة وفي خط مستقيم ما لم تؤثر عليه قوة خارجية تغير من حالته.
+                </div>
             </div>
 
-            <!-- مادة   الأحياء وعلم البيئة -->
-            <div class="course-card">
-                <h3>📚   علم البيئة </h3>
-                <p>السلوكيات البيئية .</p>
-                <button class="btn" onclick="showLesson('علم البيئة ''درس اليوم: السلوكيات البيئية  .')">ابدأ التعلم</button>
+            <!-- مادة علم البيئة -->
+            <div class="lesson-box env-box">
+                <h3>📚 مادة: علم البيئة</h3>
+                <h4>عنوان الدرس: السلوكيات البيئية وأنواعها</h4>
+                <div class="lesson-content">
+                    دراسة تفاعل الكائنات الحية مع بيئاتها المحيطة. <br>
+                    <strong>الشرح المعتمد:</strong> نتعلم في هذا الدرس كيف تؤثر السلوكيات البيئية على استمرار الحياة، وندرس العلاقات المتبادلة مثل التكافل، التعايش، والتنافس بين الكائنات الحية داخل النظام البيئي لضمان التوازن الطبيعي.
+                </div>
             </div>
-        </div>
 
-        <!-- منطقة عرض الشرح التفاعلي -->
-        <div class="lesson-viewer" id="lessonViewer">
-            <h2 id="lessonTitle" style="color: #2c3e50;"></h2>
-            <hr>
-            <p id="lessonContent" style="font-size: 18px; line-height: 1.8; color: #444;"></p>
-            <button class="btn" style="background-color: #e74c3c;" onclick="hideLesson()">إغلاق الدرس</button>
         </div>
     </div>
 
-    <!-- تذييل الصفحة -->
     <footer>
         <p>جميع الحقوق محفوظة © 2026 - منصتي التعليمية الذكية</p>
     </footer>
 
-    <!-- نظام التشغيل التفاعلي بجافاسكريبت -->
-    <script>
-        function showLesson(courseName, content) {
-            // إظهار منطقة الشرح وتحديث بياناتها
-            const viewer = document.getElementById('lessonViewer');
-            document.getElementById('lessonTitle').innerText = 'شرح مادة: ' + courseName;
-            document.getElementById('lessonContent').innerText = content;
-            
-            viewer.style.display = 'block';
-            // الانتقال التلقائي لمكان الشرح ليراه الطالب
-            viewer.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function hideLesson() {
-            // إخفاء منطقة الشرح
-            document.getElementById('lessonViewer').style.display = 'none';
-        }
-    </script>
 </body>
 </html>
