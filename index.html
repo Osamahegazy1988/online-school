@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصتي التعليمية</title>
+    <style>
+        /* إعدادات الخطوط والألوان العامة */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        /* شريط التنقل */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 15px;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* القسم الترحيبي */
+        .hero {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            margin: 0 0 10px 0;
+            font-size: 36px;
+        }
+
+        /* الحاوية الرئيسية للمواد */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        /* بطاقة المادة */
+        .course-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .course-card h3 {
+            color: #2980b9;
+            margin-top: 0;
+        }
+
+        .course-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #27ae60;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            cursor: pointer;
+            border: none;
+            font-size: 15px;
+        }
+
+        .btn:hover {
+            background-color: #219653;
+        }
+
+        /* نافذة عرض الشرح التفاعلية */
+        .lesson-viewer {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            display: none; /* مخفي افتراضياً ويظهر عند الضغط على مادة */
+        }
+
+        /* تذييل الصفحة */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2c3e50;
+            color: white;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- شريط التنقل -->
+    <header>
+        <div class="logo">🎯 منصتي التعليمية</div>
+        <nav>
+            <a href="#">الرئيسية</a>
+            <a href="#">المواد</a>
+            <a href="#">عن المنصة</a>
+        </nav>
+    </header>
+
+    <!-- القسم الترحيبي -->
+    <div class="hero">
+        <h1>مرحباً بك في عالم المعرفة الرقمي</h1>
+        <p>اختر مادتك وابدأ رحلة التعلم الممتعة والذكية اليوم!</p>
+    </div>
+
+    <!-- المحتوى الرئيسي -->
+    <div class="container">
+        <h2 class="section-title">المواد الدراسية المتاحة</h2>
+        
+        <div class="courses-grid">
+            <!-- مادة الرياضيات -->
+            <div class="course-card">
+                <h3>🧮 الرياضيات</h3>
+                <p>تعلم الجبر، الهندسة، وحساب المثلثات بطرق مبسطة وتفاعلية تناسب جميع المستويات.</p>
+                <button class="btn" onclick="showLesson('الرياضيات', 'درس اليوم: مقدمة في المعادلات الجبرية. سنقوم بفهم كيف نجد قيمة المتغير X في المعادلات البسيطة.')">ابدأ التعلم</button>
+            </div>
+
+            <!-- مادة العلوم -->
+            <div class="course-card">
+                <h3>🧪 العلوم والفيزياء</h3>
+                <p>اكتشف أسرار الكون، وقوانين الحركة، والتفاعلات الكيميائية الممتعة من حولنا.</p>
+                <button class="btn" onclick="showLesson('العلوم والفيزياء', 'درس اليوم: قوانين نيوتن للحركة. سنتعرف على القانون الأول (القصور الذاتي) وتطبيقاته في حياتنا اليومية.')">ابدأ التعلم</button>
+            </div>
+
+            <!-- مادة اللغة العربية -->
+            <div class="course-card">
+                <h3>📚 اللغة العربية</h3>
+                <p>قواعد النحو والصرف، البلاغة، وتذوق النصوص الأدبية بأسلوب سلس ومشوق.</p>
+                <button class="btn" onclick="showLesson('اللغة العربية', 'درس اليوم: الجملة الاسمية والجملة الفعلية. التفريق بين المبتدأ والخبر، والفعل والفاعل مع أمثلة إعرابية.')">ابدأ التعلم</button>
+            </div>
+        </div>
+
+        <!-- منطقة عرض الشرح التفاعلي -->
+        <div class="lesson-viewer" id="lessonViewer">
+            <h2 id="lessonTitle" style="color: #2c3e50;"></h2>
+            <hr>
+            <p id="lessonContent" style="font-size: 18px; line-height: 1.8; color: #444;"></p>
+            <button class="btn" style="background-color: #e74c3c;" onclick="hideLesson()">إغلاق الدرس</button>
+        </div>
+    </div>
+
+    <!-- تذييل الصفحة -->
+    <footer>
+        <p>جميع الحقوق محفوظة © 2026 - منصتي التعليمية الذكية</p>
+    </footer>
+
+    <!-- نظام التشغيل التفاعلي بجافاسكريبت -->
+    <script>
+        function showLesson(courseName, content) {
+            // إظهار منطقة الشرح وتحديث بياناتها
+            const viewer = document.getElementById('lessonViewer');
+            document.getElementById('lessonTitle').innerText = 'شرح مادة: ' + courseName;
+            document.getElementById('lessonContent').innerText = content;
+            
+            viewer.style.display = 'block';
+            // الانتقال التلقائي لمكان الشرح ليراه الطالب
+            viewer.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function hideLesson() {
+            // إخفاء منطقة الشرح
+            document.getElementById('lessonViewer').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
